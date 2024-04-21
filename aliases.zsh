@@ -68,5 +68,9 @@ py3_tty_upgrade () {
 alias script_tty_upgrade="echo '/usr/bin/script -qc /bin/bash /dev/null'| xclip -sel clip"
 alias tty_fix="stty raw -echo; fg; reset"
 alias tty_conf="stty -a | sed 's/;//g' | head -n 1 | sed 's/.*baud /stty /g;s/line.*//g' | xclip -sel clip"
+alias tty_confpy2="(stty -a | sed 's/;//g' | head -n 1 | sed 's/.*baud /stty /g;s/line.*//g'; echo \"python3 -c 'import pty;pty.spawn(\\\"/bin/bash\\\")'\") | tr '\n' ';' | xclip -sel clip"
+alias tty_confpy3="(stty -a | sed 's/;//g' | head -n 1 | sed 's/.*baud /stty /g;s/line.*//g'; echo \"python3 -c 'import pty;pty.spawn(\\\"/bin/bash\\\")'\") | tr '\n' ';' | xclip -sel clip"
+alias tty_full2="tty_confpy2; tty_fix"
+alias tty_full="tty_confpy3; tty_fix"
 
 export PATH=~/zsh-aliases/shells/:$PATH
